@@ -14,6 +14,9 @@ public interface PersonService {
     Person addPerson(int id, String name, int age) throws PersonExistsEx;
 
     @WebMethod
+    Person updatePerson(int id, String name, int age) throws PersonNotFoundEx;
+
+    @WebMethod
     boolean deletePerson(int id) throws PersonNotFoundEx;
 
     @WebMethod

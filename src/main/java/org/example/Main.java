@@ -12,7 +12,7 @@ public class Main {
 
         PersonServiceImpl psi = new PersonServiceImpl();
         Endpoint.publish("http://localhost:8081/personservice", psi);
-        System.out.println("Press ENTER to STOP PErsonService ...");
+        System.out.println("Press ENTER to STOP PersonService ...");
 
         try {
             System.in.read();

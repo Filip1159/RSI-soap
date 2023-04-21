@@ -7,7 +7,7 @@ import java.util.List;
 
 @WebService(serviceName = "PersonService", endpointInterface = "org.example.PersonService")
 public class PersonServiceImpl implements PersonService {
-    private PersonRepository personRepository = new PersonRepositoryImpl();
+    private final PersonRepository personRepository = new PersonRepositoryImpl();
 
     @Override
     @WebMethod
@@ -32,6 +32,13 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     @WebMethod
+    public Person updatePerson(int id, String name, int age) throws PersonNotFoundEx {
+        System.out.println("... called updatePerson id=" + id + " name=" + name + " age=" + age);
+        return personRepository.updatePerson(id, name, age);
+    }
+
+    @Override
+    @WebMethod
     public boolean deletePerson(int id) throws PersonNotFoundEx {
         System.out.println("...called deletePerson id=" + id);
         return personRepository.deletePerson(id);
@@ -40,7 +47,7 @@ public class PersonServiceImpl implements PersonService {
     @Override
     @WebMethod
     public int countPersons() {
-        System.out.println("... calles countPersons");
+        System.out.println("... called countPersons");
         return personRepository.countPersons();
     }
 }
